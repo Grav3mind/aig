@@ -4,7 +4,7 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CollapsedSummary",
 
     construct : function()
     {
-	var height = 200;
+	var height = 100;
 	var layout;
 	
 	this.base(arguments);
@@ -22,10 +22,10 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CollapsedSummary",
 	this.setLayout(layout);
 
 	// Add children
-	//this.getChildControl("icon");
+	this.getChildControl("icon");
 	this.getChildControl("UserIcon");
 	this.getChildControl("UserName");
-	this.getChildControl("UserInfoSection");
+	//this.getChildControl("UserInfoSection");
 	this.getChildControl("TextPreview");
     },
 
@@ -65,15 +65,15 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CollapsedSummary",
     
     statics :
     {
-	Height : 100,
+	Height : 50,
 
-	Width : 
-	{
-	    UserIcon : 75,
-	    UserName : 75,
-	    UserInfoSection : 75,
-	    TextPreview : 75
-	}
+	//Width : 
+	//{
+	 //   UserIcon : 25,
+	  //  UserName : 10,
+	   // UserInfoSection : 25,
+	    //TextPreview : 200
+	//}
     },
 
     members:
@@ -88,28 +88,28 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CollapsedSummary",
 
 	    case "icon" :
 		control = new qx.ui.form.Button("Yo");
-		this.add(control, {row : 2, column : 2});
+		this.add(control, {row : 1, column : 1, colSpan : 2});
 		break;
 
 	    case "UserIcon" :
 		control = new qx.ui.basic.Image("aiagallery/homepage2.png");
-		control.setLayoutProperties({row : 1, column : 1});
-		this.add(control, {row : 1, column : 1});
+		//control.setLayoutProperties({row : 1, column : 1});
+		this.add(control, {row : 2, column : 1});
 		break;
 
 	    case "UserName" :
-		control = new qx.ui.form.TextArea("Lorem Ipsum...");
-		this.add(control, {row : 2, column : 1});
+		control = new qx.ui.form.TextArea("Dr. Pepper");
+		this.add(control, {row : 2, column : 3});
 		break;
 		
 	    case "UserInfoSection" :
 		control = new qx.ui.form.TextArea("User Info...");
-		this.add(control, {row : 1, column : 2});
+		this.add(control, {row : 2, column : 2});
 		break;
 		
 	    case "TextPreview" : 
 		control = new qx.ui.form.TextArea("Lorem Ipsum...");
-		this.add(control, {row : 1, column : 3});
+		this.add(control, {row : 2, column : 4, rowSpan : 2});
 		break;
 	    }
 
