@@ -9,23 +9,17 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CollapsedSummary",
 	this.base(arguments);
 	
 	// Set the layout to a grid
-	layout = new qx.ui.layout.Grid(8, 8);
+	layout = new qx.ui.layout.Grid(4, 4);
 	this.setLayout(layout);
 
 	// Add children
-	//this.getChildControl("icon");
 	this.getChildControl("UserIcon");
 	this.getChildControl("UserName");
-//	this.getChildControl("UserInfoSection");
 	this.getChildControl("TextPreview");
     },
 
     properties :
     {
-	icon :
-	{
-	    themeable : true
-	},
 
 	UserIcon : 
 	{
@@ -35,17 +29,17 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CollapsedSummary",
 	    themeable : true
 	},
 	
+	icon :
+	{
+	    themeable : true
+	},
+
 	UserName : 
 	{
 	    check : "String", 
 	    apply : "_applyUserName"
 	},
 	
-	UserInfoSection :
-	{
-	    check : "String",
-	    apply : "_applyUserInfoSection"
-	},
 	
 	TextPreview : 
 	{
@@ -67,8 +61,8 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CollapsedSummary",
 		control = new qx.ui.basic.Image("aiagallery/homepage2.png");
                 control.set(
                   {
-                    height : 32,
-                    width  : 32
+                    height : 64,
+                    width  : 64
                   });
 		this.add(control, {row : 1, column : 0});
 		break;
@@ -78,16 +72,16 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CollapsedSummary",
 		this.add(control, {row : 0, column : 0});
 		break;
 		
-/*
-	    case "UserInfoSection" :
-		control = new qx.ui.form.TextArea("User Info...");
-		this.add(control, {row : 0, column : 1, rowSpan : 2});
-		break;
-*/
 		
 	    case "TextPreview" : 
-		control = new qx.ui.basic.Label("Preview...");
-		this.add(control, {row : 0, column : 2, rowSpan : 2});
+		control = new qx.ui.basic.Label("Preview text of user Lorem Ipsum................................");
+		control.setTextAlign("right");
+		control.set(
+		{
+		    allowGrowX : true,
+		    rich : true
+		});
+		this.add(control, {row : 1, column : 2, rowSpan : 2});
 		break;
 	    }
 
@@ -103,13 +97,6 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CollapsedSummary",
 	{
 	    this.getChildControl("UserName").setSource(value);
 	},
-
-/*
-	_applyUserInfoSection : function(value, old)
-	{
-	    this.getChildControl("UserInfoSection").setSource(value);
-	},
-*/
 
 	_applyTextPreview : function(value, old)
 	{

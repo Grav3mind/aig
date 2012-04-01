@@ -4,28 +4,17 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.ExpandedSummaryLTE",
 
     construct : function()
     {
-	var height = 200;
 	var layout;
 	
 	this.base(arguments);
 	
-	height = aiagallery.widget.CollapsedSummary.Height;
-	this.set(
-	    {
-		height : height,
-		minHeight : height,
-		maxHeight : height
-	    });
-
 	// Set the layout to a grid
-	layout = new qx.ui.layout.Grid();
+	layout = new qx.ui.layout.Grid(4, 4);
 	this.setLayout(layout);
 
 	// Add children
-	//this.getChildControl("icon");
 	this.getChildControl("UserIcon");
 	this.getChildControl("UserName");
-	this.getChildControl("UserInfoSection");
 	this.getChildControl("TextPreview");
     },
 
@@ -50,12 +39,6 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.ExpandedSummaryLTE",
 	    apply : "_applyUserName"
 	},
 	
-	UserInfoSection :
-	{
-	    check : "String",
-	    apply : "_applyUserInfoSection"
-	},
-	
 	TextPreview : 
 	{
 	    check : "String",
@@ -63,19 +46,6 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.ExpandedSummaryLTE",
 	}
     },
     
-    statics :
-    {
-	Height : 100,
-
-	Width : 
-	{
-	    UserIcon : 75,
-	    UserName : 75,
-	    UserInfoSection : 75,
-	    TextPreview : 75
-	}
-    },
-
     members:
     {
 	_createChildControlImpl : function(id, hash)
@@ -86,30 +56,24 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.ExpandedSummaryLTE",
 	    switch(id)
 	    {
 
-	    case "icon" :
-		control = new qx.ui.form.Button("Yo");
-		this.add(control, {row : 2, column : 2});
-		break;
-
 	    case "UserIcon" :
 		control = new qx.ui.basic.Image("aiagallery/homepage2.png");
-		control.setLayoutProperties({row : 1, column : 1});
-		this.add(control, {row : 1, column : 1});
+		control.set(
+		{
+		    height: 128,
+		    width : 128
+		});	
+		this.add(control, {row : 1, column : 0});
 		break;
 
 	    case "UserName" :
-		control = new qx.ui.form.TextArea("Lorem Ipsum...");
-		this.add(control, {row : 2, column : 1});
-		break;
-		
-	    case "UserInfoSection" :
-		control = new qx.ui.form.TextArea("User Info...");
-		this.add(control, {row : 1, column : 2});
+		control = new qx.ui.form.TextArea("User Name....");
+		this.add(control, {row : 0, column : 0});
 		break;
 		
 	    case "TextPreview" : 
 		control = new qx.ui.form.TextArea("Lorem Ipsum...");
-		this.add(control, {row : 1, column : 3});
+		this.add(control, {row : 1, column : 2, rowSpan : 2});
 		break;
 	    }
 
@@ -124,11 +88,6 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.ExpandedSummaryLTE",
 	_applyUserName : function(value, old)
 	{
 	    this.getChildControl("UserName").setSource(value);
-	},
-
-	_applyUserInfoSection : function(value, old)
-	{
-	    this.getChildControl("UserInfoSection").setSource(value);
 	},
 
 	_applyTextPreview : function(value, old)
