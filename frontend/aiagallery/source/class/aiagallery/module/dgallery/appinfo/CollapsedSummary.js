@@ -57,6 +57,12 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CollapsedSummary",
 
 	    switch(id)
 	    {
+
+		
+		/*TODO: Link this up so that we actually get the real user's icon/
+		  TODO: Change the default icon to a sillohuete.
+		*/
+
 	    case "UserIcon" :
 		control = new qx.ui.basic.Image("aiagallery/homepage2.png");
                 control.set(
@@ -67,12 +73,31 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CollapsedSummary",
 		this.add(control, {row : 1, column : 0});
 		break;
 
+	    
+		
+
+		/*TODO: Link the user name into the backend so that we get a real user name.
+		 */ 
+	   
 	    case "UserName" :
 		control = new qx.ui.basic.Label("UserName...");
 		this.add(control, {row : 0, column : 0});
 		break;
 		
 		
+		
+		
+		/*TODO: Figure out how to implement this child in such a way that it displays
+		  only a portion of its argument, probably 61 or 125 characters, and appending
+		  on an elipse "...".
+
+		  TODO: Make it so that the text displayed in the label is displayed near the bottom
+		  rather than near the top.
+		 
+		  TODO: Add a border around the label so that it looks more like the rest of the site.
+		  Wait until I merge with the new site before worrying about this.
+		*/
+	     
 	    case "TextPreview" : 
 		control = new qx.ui.basic.Label("Preview text of user Lorem Ipsum................................");
 		control.setTextAlign("right");

@@ -57,12 +57,12 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CommentPanel",
 	      control = new aiagallery.module.dgallery.appinfo.ExpandedSummaryLTE(this.__fsm, this);
 	      control.addListener("click", this.collapse, this);
 	      
-	      if(this._hasChildren())
-	      {
-		  this._removeAt(this.indexOf("bar"));
-	      };
+	     // if(this._hasChildren())
+	      //{
+	//	  this._removeAt(this.indexOf("bar"));
+	 //     };
 	 
-	      this._addAt(control, 0, {flex : 1});
+	      this._add(control, {flex : 1});
 	      break;
 
 	  }
@@ -79,7 +79,7 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CommentPanel",
 
       collapse : function() 
       {
-	  this.getChildControl("bar");
+	  //this.getChildControl("bar");
 	  this.toggleValue(this);
       },
       _applyLabel : function(value, old)
