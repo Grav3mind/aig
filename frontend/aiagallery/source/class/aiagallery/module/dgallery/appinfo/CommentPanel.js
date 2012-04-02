@@ -40,8 +40,13 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CommentPanel",
 	  case "bar":
 	      control = new aiagallery.module.dgallery.appinfo.CollapsedSummary(this.__fsm, this);
 	      control.addListener("click", this.expand, this);
-	      control.addListener
-              this._addAt(control, 1, {flex : 1});
+	      
+	      if (this._hasChildren())
+	      {
+		  this._removeAt(this.indexOf("newBar"));
+	      };
+
+	      this._addAt(control, 0, {flex : 1});
               break;
 
 	  case "container" :
@@ -51,7 +56,13 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CommentPanel",
 	  case "newBar" :
 	      control = new aiagallery.module.dgallery.appinfo.ExpandedSummaryLTE(this.__fsm, this);
 	      control.addListener("click", this.collapse, this);
-	      this._addAt(control, 1, {flex : 1});
+	      
+	      if(this._hasChildren())
+	      {
+		  this._removeAt(this.indexOf("bar"));
+	      };
+	 
+	      this._addAt(control, 0, {flex : 1});
 	      break;
 
 	  }
