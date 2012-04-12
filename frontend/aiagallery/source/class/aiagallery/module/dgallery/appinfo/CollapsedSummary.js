@@ -64,7 +64,7 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CollapsedSummary",
 		*/
 
 	    case "UserIcon" :
-		control = new qx.ui.basic.Image("aiagallery/homepage2.png");
+		control = new qx.ui.basic.Image("/aiagallery/homepage2.png");
                 control.set(
                   {
                     height : 64,
