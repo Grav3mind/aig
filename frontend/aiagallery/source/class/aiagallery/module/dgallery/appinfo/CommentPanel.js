@@ -40,16 +40,18 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CommentPanel",
   	  {
     	  case "bar":
 	  
-	        collapsed = new aiagallery.module.dgallery.appinfo.CollapsedSummary(this.__fsm, this);
-	        collapsed.addListener("click", this.expand, this);
-	        
-	       // expanded = new aiagallery.module.dgallery.appinfo.ExpandedSummaryLTE(this.__fsm, this);
-         // expanded.addListener("click", this.collapse, this);
+	        // expanded = new aiagallery.module.dgallery.appinfo.ExpandedSummaryLTE(this.__fsm, this);
+          // expanded.addListener("click", this.collapse, this);
       
           // create stack container
 	        var stack = new qx.ui.container.Stack();
+         
+          collapsed = new aiagallery.module.dgallery.appinfo.CollapsedSummary(this.__fsm, this);
+	        collapsed.addListener("click", this.expand(stack), this);
+	        
+         
           stack.add (collapsed);
-         // stack.add (expanded);
+          // stack.add (expanded);
             
           stack.setSelection ([stack.getChildren()[0]]);  
 
@@ -74,14 +76,14 @@ qx.Class.define("aiagallery.module.dgallery.appinfo.CommentPanel",
 	  
     },
 
-    expand : function ()
+    expand : function (stack)
     { 
       this.getChildControl ("bar").setSelection ([stack.getChildren()[1]]);
 	    this.toggleValue(this);
     },
 
 
-    collapse : function() 
+    collapse : function (stack) 
     {
       this.getChildControl ("bar").setSelection ([stack.getChildren()[0]]);
 	    this.toggleValue(this);
